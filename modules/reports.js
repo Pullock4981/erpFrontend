@@ -75,23 +75,24 @@ function loadReports() {
                 
                 <div class="card bg-base-100 shadow">
                     <div class="card-body">
-                        <div class="flex justify-between items-center mb-4">
-                            <h2 class="card-title">Sales by Category</h2>
-                            <div class="text-sm text-base-content/70">
+                        <div class="flex justify-between items-center mb-3">
+                            <h2 class="card-title text-lg">Sales by Category</h2>
+                            <div class="text-xs text-base-content/70">
                                 <span class="font-semibold">Total: </span>
                                 <span class="text-success">${formatCurrency(Object.values(getCategorySalesData(sales)).reduce((a, b) => a + b, 0))}</span>
                             </div>
                         </div>
-                        <canvas id="categoryChart"></canvas>
-                        <div class="mt-4 text-xs">
-                            <div class="font-semibold mb-2">Category Breakdown:</div>
-                            <div class="space-y-1">
+                        <div class="relative" style="height: 280px;">
+                            <canvas id="categoryChart"></canvas>
+                        </div>
+                        <div class="mt-3 text-xs">
+                            <div class="grid grid-cols-2 gap-1.5">
                                 ${Object.entries(getCategorySalesData(sales)).map(([cat, val]) => {
         const percentage = Object.values(getCategorySalesData(sales)).reduce((a, b) => a + b, 0) > 0 ?
             ((val / Object.values(getCategorySalesData(sales)).reduce((a, b) => a + b, 0)) * 100).toFixed(1) : 0;
-        return `<div class="flex justify-between items-center p-1 bg-base-200 rounded">
-                                        <span>${cat}</span>
-                                        <span class="font-semibold">${formatCurrency(val)} (${percentage}%)</span>
+        return `<div class="flex justify-between items-center p-1.5 bg-base-200 rounded text-xs">
+                                        <span class="truncate">${cat}</span>
+                                        <span class="font-semibold ml-2 whitespace-nowrap">${formatCurrency(val)} (${percentage}%)</span>
                                     </div>`;
     }).join('')}
                             </div>
@@ -378,7 +379,8 @@ function initCategoryChart(sales) {
         },
         options: {
             responsive: true,
-            maintainAspectRatio: true,
+            maintainAspectRatio: false,
+            aspectRatio: 1.5,
             plugins: {
                 tooltip: {
                     backgroundColor: 'rgba(0, 0, 0, 0.8)',
@@ -398,31 +400,7 @@ function initCategoryChart(sales) {
                     }
                 },
                 legend: {
-                    display: true,
-                    position: 'right',
-                    labels: {
-                        font: { size: 12 },
-                        padding: 12,
-                        usePointStyle: true,
-                        generateLabels: function (chart) {
-                            const data = chart.data;
-                            if (data.labels.length && data.datasets.length) {
-                                return data.labels.map((label, i) => {
-                                    const value = data.datasets[0].data[i];
-                                    const percentage = totalSales > 0 ? ((value / totalSales) * 100).toFixed(1) : 0;
-                                    return {
-                                        text: `${label} (${percentage}%)`,
-                                        fillStyle: data.datasets[0].backgroundColor[i],
-                                        strokeStyle: data.datasets[0].borderColor,
-                                        lineWidth: data.datasets[0].borderWidth,
-                                        hidden: false,
-                                        index: i
-                                    };
-                                });
-                            }
-                            return [];
-                        }
-                    }
+                    display: false
                 }
             },
             onClick: (event, elements) => {
