@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RootX Softwares - ERP System</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.4.19/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="bg-base-200">
+    <!-- Sidebar -->
+    <div class="drawer lg:drawer-open">
+        <input id="drawer-toggle" type="checkbox" class="drawer-toggle" />
+        <div class="drawer-content flex flex-col">
+            <!-- Header -->
+            <div class="navbar bg-primary text-primary-content lg:hidden">
+                <div class="flex-none">
+                    <label for="drawer-toggle" class="btn btn-square btn-ghost">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            class="inline-block w-6 h-6 stroke-current">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </label>
+                </div>
+                <div class="flex-1 flex items-center gap-2">
+                    <img src="assats/Screenshot 2025-12-09 123307.png" alt="RootX Logo" class="h-8 w-8 object-contain">
+                    <a class="btn btn-ghost text-xl font-bold">RootX Softwares</a>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <main class="flex-1 p-4 lg:p-8 min-h-screen" id="main-content">
+                <!-- Content will be loaded here -->
+            </main>
+
+            <!-- Footer -->
+            <footer class="footer footer-center p-4 bg-base-200 text-base-content border-t border-base-300">
+                <div class="flex flex-col items-center gap-2">
+                    <div class="flex items-center gap-2">
+                        <img src="assats/Screenshot 2025-12-09 123307.png" alt="RootX Logo"
+                            class="h-8 w-8 object-contain">
+                        <p class="font-semibold text-primary">RootX Softwares</p>
+                    </div>
+                    <p class="text-sm text-base-content/70">© <span class="footer-year">2024</span> RootX Softwares. All
+                        rights reserved.</p>
+                </div>
+            </footer>
+        </div>
+        <div class="drawer-side">
+            <label for="drawer-toggle" class="drawer-overlay"></label>
+            <aside class="w-64 min-h-full bg-base-100">
+                <div class="p-4">
+                    <div class="flex items-center gap-2 mb-6">
+                        <img src="assats/Screenshot 2025-12-09 123307.png" alt="RootX Logo"
+                            class="h-10 w-10 object-contain">
+                        <h2 class="text-xl font-bold text-primary">RootX Softwares</h2>
+                    </div>
+                    <ul class="menu menu-vertical">
+                        <li><a href="#" onclick="loadPage('dashboard')" id="menu-dashboard"><svg
+                                    xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                                </svg>Dashboard</a></li>
+                        <li><a href="#" onclick="loadPage('inventory')" id="menu-inventory"><svg
+                                    xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                                </svg>Inventory</a></li>
+                        <li><a href="#" onclick="loadPage('sales')" id="menu-sales"><svg
+                                    xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                                </svg>Sales</a></li>
+                        <li><a href="#" onclick="loadPage('purchase')" id="menu-purchase"><svg
+                                    xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                                </svg>Purchase</a></li>
+                        <li><a href="#" onclick="loadPage('accounting')" id="menu-accounting"><svg
+                                    xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>Accounting</a></li>
+                        <li><a href="#" onclick="loadPage('hr')" id="menu-hr"><svg xmlns="http://www.w3.org/2000/svg"
+                                    class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                                </svg>HR Management</a></li>
+                        <li><a href="#" onclick="loadPage('reports')" id="menu-reports"><svg
+                                    xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                                </svg>Reports</a></li>
+                    </ul>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+    <script src="modules/dashboard.js"></script>
+    <script src="modules/inventory.js"></script>
+    <script src="modules/sales.js"></script>
+    <script src="modules/purchase.js"></script>
+    <script src="modules/accounting.js"></script>
+    <script src="modules/hr.js"></script>
+    <script src="modules/reports.js"></script>
+</body>
+
+</html>
