@@ -186,13 +186,13 @@ function renderPurchasesTable(purchases) {
 
     return purchases.map(purchase => `
         <tr>
-            <td class="font-mono">#${purchase.id.substring(0, 8)}</td>
-            <td>${purchase.supplier}</td>
-            <td>${formatDate(purchase.date)}</td>
-            <td>${purchase.items.length} item(s)</td>
-            <td class="font-semibold">${formatCurrency(purchase.total)}</td>
-            <td><span class="badge badge-success">Completed</span></td>
-            <td>
+            <td data-label="Order ID" class="font-mono">#${purchase.id.substring(0, 8)}</td>
+            <td data-label="Supplier">${purchase.supplier}</td>
+            <td data-label="Date">${formatDate(purchase.date)}</td>
+            <td data-label="Items">${purchase.items.length} item(s)</td>
+            <td data-label="Total" class="font-semibold">${formatCurrency(purchase.total)}</td>
+            <td data-label="Status"><span class="badge badge-success">Completed</span></td>
+            <td data-label="Actions">
                 <button class="btn btn-xs sm:btn-sm btn-info w-full sm:w-auto" onclick="viewPurchase('${purchase.id}')">View</button>
             </td>
         </tr>

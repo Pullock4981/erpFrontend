@@ -157,18 +157,18 @@ function renderTransactionsTable(transactions) {
 
     return transactions.sort((a, b) => new Date(b.date) - new Date(a.date)).map(transaction => `
         <tr>
-            <td>${formatDate(transaction.date)}</td>
-            <td>
+            <td data-label="Date">${formatDate(transaction.date)}</td>
+            <td data-label="Type">
                 <span class="badge ${transaction.type === 'income' ? 'badge-success' : 'badge-error'}">
                     ${transaction.type === 'income' ? 'Income' : 'Expense'}
                 </span>
             </td>
-            <td><span class="badge badge-outline">${transaction.category}</span></td>
-            <td>${transaction.description}</td>
-            <td class="font-semibold ${transaction.type === 'income' ? 'text-success' : 'text-error'}">
+            <td data-label="Category"><span class="badge badge-outline">${transaction.category}</span></td>
+            <td data-label="Description">${transaction.description}</td>
+            <td data-label="Amount" class="font-semibold ${transaction.type === 'income' ? 'text-success' : 'text-error'}">
                 ${transaction.type === 'income' ? '+' : '-'}${formatCurrency(transaction.amount)}
             </td>
-            <td>
+            <td data-label="Actions">
                 <button class="btn btn-xs sm:btn-sm btn-error w-full sm:w-auto" onclick="deleteTransaction('${transaction.id}')">Delete</button>
             </td>
         </tr>

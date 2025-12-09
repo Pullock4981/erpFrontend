@@ -118,9 +118,9 @@ function loadReports() {
                                 <tbody>
                                     ${getTopProducts(sales).map(product => `
                                         <tr>
-                                            <td class="font-semibold">${product.name}</td>
-                                            <td>${product.quantity}</td>
-                                            <td>${formatCurrency(product.revenue)}</td>
+                                            <td data-label="Product" class="font-semibold">${product.name}</td>
+                                            <td data-label="Quantity Sold">${product.quantity}</td>
+                                            <td data-label="Revenue">${formatCurrency(product.revenue)}</td>
                                         </tr>
                                     `).join('')}
                                 </tbody>
@@ -145,9 +145,9 @@ function loadReports() {
                                 <tbody>
                                     ${getDepartmentStats(employees).map(dept => `
                                         <tr>
-                                            <td class="font-semibold">${dept.department}</td>
-                                            <td>${dept.count}</td>
-                                            <td>${formatCurrency(dept.totalSalary)}</td>
+                                            <td data-label="Department" class="font-semibold">${dept.department}</td>
+                                            <td data-label="Employees">${dept.count}</td>
+                                            <td data-label="Total Salary">${formatCurrency(dept.totalSalary)}</td>
                                         </tr>
                                     `).join('')}
                                 </tbody>

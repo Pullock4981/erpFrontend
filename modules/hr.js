@@ -169,18 +169,18 @@ function renderEmployeesTable(employees) {
 
     return employees.map(employee => `
         <tr>
-            <td class="font-mono">${employee.id.substring(0, 8)}</td>
-            <td class="font-semibold">${employee.name}</td>
-            <td>${employee.email}</td>
-            <td>${employee.phone}</td>
-            <td><span class="badge badge-outline">${employee.department}</span></td>
-            <td>${employee.position}</td>
-            <td>${formatCurrency(employee.salary)}</td>
-            <td>${formatDate(employee.joinDate)}</td>
-            <td>
+            <td data-label="ID" class="font-mono">${employee.id.substring(0, 8)}</td>
+            <td data-label="Name" class="font-semibold">${employee.name}</td>
+            <td data-label="Email">${employee.email}</td>
+            <td data-label="Phone">${employee.phone}</td>
+            <td data-label="Department"><span class="badge badge-outline">${employee.department}</span></td>
+            <td data-label="Position">${employee.position}</td>
+            <td data-label="Salary">${formatCurrency(employee.salary)}</td>
+            <td data-label="Join Date">${formatDate(employee.joinDate)}</td>
+            <td data-label="Actions">
                 <div class="flex flex-col sm:flex-row gap-1 sm:gap-2">
-                    <button class="btn btn-xs sm:btn-sm btn-info" onclick="editEmployee('${employee.id}')">Edit</button>
-                    <button class="btn btn-xs sm:btn-sm btn-error" onclick="deleteEmployee('${employee.id}')">Delete</button>
+                    <button class="btn btn-xs sm:btn-sm btn-info w-full sm:w-auto" onclick="editEmployee('${employee.id}')">Edit</button>
+                    <button class="btn btn-xs sm:btn-sm btn-error w-full sm:w-auto" onclick="deleteEmployee('${employee.id}')">Delete</button>
                 </div>
             </td>
         </tr>

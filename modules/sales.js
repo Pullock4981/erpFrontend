@@ -148,13 +148,13 @@ function renderSalesTable(sales) {
 
     return sales.map(sale => `
         <tr>
-            <td class="font-mono">#${sale.id.substring(0, 8)}</td>
-            <td>${sale.customer}</td>
-            <td>${formatDate(sale.date)}</td>
-            <td>${sale.items.length} item(s)</td>
-            <td class="font-semibold">${formatCurrency(sale.total)}</td>
-            <td><span class="badge badge-success">Completed</span></td>
-            <td>
+            <td data-label="Order ID" class="font-mono">#${sale.id.substring(0, 8)}</td>
+            <td data-label="Customer">${sale.customer}</td>
+            <td data-label="Date">${formatDate(sale.date)}</td>
+            <td data-label="Items">${sale.items.length} item(s)</td>
+            <td data-label="Total" class="font-semibold">${formatCurrency(sale.total)}</td>
+            <td data-label="Status"><span class="badge badge-success">Completed</span></td>
+            <td data-label="Actions">
                 <button class="btn btn-xs sm:btn-sm btn-info w-full sm:w-auto" onclick="viewSale('${sale.id}')">View</button>
             </td>
         </tr>

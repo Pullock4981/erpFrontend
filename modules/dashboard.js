@@ -136,9 +136,9 @@ function loadDashboard() {
                                 <tbody>
                                     ${getRecentActivities().map(activity => `
                                         <tr>
-                                            <td><span class="badge badge-${activity.badge}">${activity.type}</span></td>
-                                            <td>${activity.description}</td>
-                                            <td>${formatDate(activity.date)}</td>
+                                            <td data-label="Type"><span class="badge badge-${activity.badge}">${activity.type}</span></td>
+                                            <td data-label="Description">${activity.description}</td>
+                                            <td data-label="Date">${formatDate(activity.date)}</td>
                                         </tr>
                                     `).join('')}
                                 </tbody>

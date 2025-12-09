@@ -126,22 +126,22 @@ function renderInventoryTable(inventory) {
 
         return `
             <tr>
-                <td>${item.id.substring(0, 8)}</td>
-                <td class="font-semibold">${item.name}</td>
-                <td><span class="badge badge-outline">${item.category}</span></td>
-                <td>${item.quantity}</td>
-                <td>${formatCurrency(item.price)}</td>
-                <td>${formatCurrency(totalValue)}</td>
-                <td>
+                <td data-label="ID">${item.id.substring(0, 8)}</td>
+                <td data-label="Name" class="font-semibold">${item.name}</td>
+                <td data-label="Category"><span class="badge badge-outline">${item.category}</span></td>
+                <td data-label="Quantity">${item.quantity}</td>
+                <td data-label="Unit Price">${formatCurrency(item.price)}</td>
+                <td data-label="Total Value">${formatCurrency(totalValue)}</td>
+                <td data-label="Status">
                     ${isLowStock ?
                 '<span class="badge badge-warning">Low Stock</span>' :
                 '<span class="badge badge-success">In Stock</span>'
             }
                 </td>
-                <td>
+                <td data-label="Actions">
                     <div class="flex flex-col sm:flex-row gap-1 sm:gap-2">
-                        <button class="btn btn-xs sm:btn-sm btn-info" onclick="editProduct('${item.id}')">Edit</button>
-                        <button class="btn btn-xs sm:btn-sm btn-error" onclick="deleteProduct('${item.id}')">Delete</button>
+                        <button class="btn btn-xs sm:btn-sm btn-info w-full sm:w-auto" onclick="editProduct('${item.id}')">Edit</button>
+                        <button class="btn btn-xs sm:btn-sm btn-error w-full sm:w-auto" onclick="deleteProduct('${item.id}')">Delete</button>
                     </div>
                 </td>
             </tr>
